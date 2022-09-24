@@ -8,40 +8,53 @@ import { print } from './js/lib.js';
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const man = {
-    hands: 2,
-    legs: 2,
-    name: 'Joey',
-    gender: 'male',
-    say: 'How you doin\'?'
-};
-const woman = {
-    hands: 2,
-    legs: 2,
-    name: 'Phoebe',
-    gender: 'female',
-    say: 'Smelly ca-a-a-a-at!'
-};
-const dog = {
-    hands: 0,
-    legs: 4,
-    name: 'Alfa',
-    gender: 'female',
-    say: 'Bow-wow!'
-};
-const cat = {
-    hands: 0,
-    legs: 4,
-    name: 'Tima',
-    gender: 'male',
-    say: 'Meow!'
-};
-const catWoman ={
-    hands: 2,
-    legs: 2,
-    name: 'Halle',
-    gender: 'female',
-    say: cat.say,
+let catWord;
+let indwellers = {
+    man : {
+        species: 'human',
+        hands: 2,
+        legs: 2,
+        name: 'Joey',
+        sex: 'male',
+        say: 'How you doin\'?',
+        chums: 'Halle, Phoebe, Alfa, Tima',
+    },
+    woman : {
+        species: 'human',
+        hands: 2,
+        legs: 2,
+        name: 'Phoebe',
+        sex: 'female',
+        say: 'Smelly ca-a-a-a-at!',
+        chums: 'Joey, Alfa, Tima',
+    },
+    dog : {
+        species: 'dog',
+        hands: 0,
+        legs: 4,
+        name: 'Alfa',
+        sex: 'female',
+        say: 'Bow-wow!',
+        chums: 'Joey, Phoebe, Tima',
+    },
+    cat : {
+        species: 'cat',
+        hands: 0,
+        legs: 4,
+        name: 'Tima',
+        sex: 'male',
+        say: 'Meow!',
+        chums: 'Halle',
+    },
+    catWoman : {
+        species: 'human',
+        hands: 2,
+        legs: 2,
+        name: 'Halle',
+        sex: 'female',
+        say: [catWord],
+        chums: 'Tima',
+    },
 };
 
 // ======== OUTPUT ========
@@ -62,8 +75,17 @@ const catWoman ={
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-    print ('human; Joey; male; 2; 2; How you doin\'?; Phoebe, Alfa, Tima');
-    print ('human; Phoebe; female; 2; 2; Smelly ca-a-a-a-at!; Joey, Alfa, Tima');
-    print ('dog; Alfa; female; 0; 4; Bow-wow!; Joey, Phoebe, Tima');
-    print('cat; Tima; male; 0; 4; Meow!; Halle, Joey, Phoebe, Alfa');
-    print ('human; '+ catWoman.name + '; ' + catWoman.gender + '; ' + catWoman.hands + '; ' + catWoman.legs + '; ' + catWoman.say + '; '+ cat.name + ', ' + woman.name + ', '+ man.name + ', ' + dog.name);
+function getWord(){
+    catWord = indwellers.cat.say;
+}
+
+let indwellersArray = Object.getOwnPropertyNames(indwellers);
+
+for (let i=0; i < indwellersArray.length; i++){
+    let prop = indwellersArray[i];
+    if (prop === 'catWoman'){
+        getWord();
+    }
+    print(indwellers[prop].species + '; ' + indwellers[prop].name + '; ' + indwellers[prop].sex + '; ' + indwellers[prop].legs + '; ' + indwellers[prop].hands + '; ' + indwellers[prop].say + '; ' + indwellers[prop].chums + '. '
+    );
+}
