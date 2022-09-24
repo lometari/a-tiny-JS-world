@@ -2,13 +2,47 @@ import { print } from './js/lib.js';
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _put repo URL here_
+   Code repository: https://github.com/lometari/a-tiny-JS-world
    Web app: _put project's github pages URL here_
    */
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-
+const man = {
+    hands: 2,
+    legs: 2,
+    name: 'Joey',
+    gender: 'male',
+    say: 'How you doin\'?'
+};
+const woman = {
+    hands: 2,
+    legs: 2,
+    name: 'Phoebe',
+    gender: 'female',
+    say: 'Smelly ca-a-a-a-at!'
+};
+const dog = {
+    hands: 0,
+    legs: 4,
+    name: 'Alfa',
+    gender: 'female',
+    say: 'Bow-wow!'
+};
+const cat = {
+    hands: 0,
+    legs: 4,
+    name: 'Tima',
+    gender: 'male',
+    say: 'Meow!'
+};
+const catWoman ={
+    hands: 2,
+    legs: 2,
+    name: 'Halle',
+    gender: 'female',
+    say: cat.say,
+};
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -28,3 +62,8 @@ import { print } from './js/lib.js';
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
+    print ('human; Joey; male; 2; 2; How you doin\'?; Phoebe, Alfa, Tima');
+    print ('human; Phoebe; female; 2; 2; Smelly ca-a-a-a-at!; Joey, Alfa, Tima');
+    print ('dog; Alfa; female; 0; 4; Bow-wow!; Joey, Phoebe, Tima');
+    print('cat; Tima; male; 0; 4; Meow!; Halle, Joey, Phoebe, Alfa');
+    print ('human; '+ catWoman.name + '; ' + catWoman.gender + '; ' + catWoman.hands + '; ' + catWoman.legs + '; ' + catWoman.say + '; '+ cat.name + ', ' + woman.name + ', '+ man.name + ', ' + dog.name);
